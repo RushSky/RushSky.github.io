@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!--
-    * Author:         BeiYuu
-    -->
-    <meta charset="utf-8" />
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="author" content="BieYuu" />
-    <meta name="renderer" content="webkit">
-    <meta name="description" content="BeiYuu's Blog" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/css/default.css" type="text/css" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
-    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-</head>
-<body>
+<!DOCTYPE HTML>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    {% include head.html %}
+    <body{% if page.wide_layout %} class="wide"{% endif %}>   
 
-    <div class="home-menu">
-        <div class="home-icon-con">
-            <a class="home-menu-icon" href="/">BeiYuu</a>
-            <a class="home-follow" href="#" title="Contact Me">+</a>
+        <!--<div id="wrapper">-->
+        <div class="search-wrapper">
+            <div class="search-form">
+                <input type="text" class="search-field" placeholder="Search...">
+                <i class="fa fa-times icon-remove-sign"></i>
+                <ul class="search-results post-list"></ul><!-- /.search-results -->
+            </div><!-- /.search-form -->
+        </div><!-- ./search-wrapper -->
+
+        <iframe id="sidebar"></iframe>
+        <header>
+            <h1 class="logo" id="blog-title"><a href="{{site.url}}">{{ site.title }}</a></h1>
+            <ul class="navigation">        
+                <li><a href="{{site.url}}/archive/"{% if page.url contains "/archive/" %}class="active"{% endif %} title="Archived articles">Archive</a></li>
+                <li><a href="{{site.url}}/about/"{% if page.url contains "/about/" %}class="active"{% endif %}>About me</a></li>
+            </ul>
+        </header>                 
+
+        {{ content }}
+
+        {% if paginator.page %}
+        <div id="paginator" class="content">
+            {% if paginator.next_page %}
+            <a href="{{site.url}}/page{{ paginator.next_page }}/">Older entries</a>
+            {% endif %}
+            {% if paginator.previous_page %}
+            <a href="{{site.url}}/page{{ paginator.previous_page }}/">Newer entries</a>
+            {% endif %}
         </div>
-        <div class="home-contact">
-            <a href="http://weibo.com/beiyuu/" target="_blank" style="margin-left:-5px;"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
-            <a href="http://www.douban.com/people/beiyuu/" target="_blank" style="text-align:center;"><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
-            <a href="http://instagram.com/beiyuu/" target="_blank" style="text-align:right"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
-        </div>
-    </div>
+        {% endif %}
 
-    {{ content }}
+        {% unless page.no_footer %}
+        <footer>
+            <p>Powered by Jekyll - <a href="http://github.com/nadjetey/redcup">Redcup</a> Theme</p>
+            <p>
+                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US" class="cc"><img src="{{site.url}}/res/cc-cc.png" class="cc">
+                    <img src="{{site.url}}/res/cc-by.png" class="cc"></a>
+                This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons License</a>
+            </p>
+        </footer>
+        {% endunless %}
 
-    <script type="text/javascript">
-        $(function(){
-            $('.home-follow').click(function(e){
-                e.preventDefault();
-
-                if($('.home-contact').is(':visible')){
-                    $('.home-contact').slideUp(100);
-                }else{
-                    $('.home-contact').slideDown(100);
-                }
-            });
-        })
-    </script>
-</body>
+        {% include disqus.html %}
+        {% include analytics.html %}
+        {% include pagescript.html %}       
+    </body>
 </html>

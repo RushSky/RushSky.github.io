@@ -1,11 +1,16 @@
-auto: true
+title: RedCup
+description: "Redcup: An awesome Theme for Jekyll"
 
-markdown: rdiscount
-pygments: true
-paginate: 8
-permalink: /:title
+url: http://nadjetey.github.io/redcup/
+port: 3000
+highlighter: pygments
 
-title: BeiYuu.com
-url: http://beiyuu.com
-feed: /atom.xml
-author_info: <a href="http://beiyuu.com/">BeiYuu</a>
+permalink: /:year/:month/:day/:title.html
+markdown: redcarpet
+
+google_analytics: #
+
+owner:
+  name: Nii Adjetey Sowah
+  disqus_shortname: nadjetey
+  twitter: _nadjetey
