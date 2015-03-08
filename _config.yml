@@ -1,16 +1,14 @@
-title: RedCup
-description: "Redcup: An awesome Theme for Jekyll"
+# Site settings
+title: Your awesome title
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  jekyll
 
-url: http://nadjetey.github.io/redcup/
-port: 3000
-highlighter: pygments
-
-permalink: /:year/:month/:day/:title.html
-markdown: redcarpet
-
-google_analytics: #
-
-owner:
-  name: Nii Adjetey Sowah
-  disqus_shortname: nadjetey
-  twitter: _nadjetey
+# Build settings
+markdown: kramdown
